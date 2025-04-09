@@ -225,7 +225,7 @@ class Potsdam(RawGeoFMDataset):
         os.removedirs(os.path.join(out_dir, "raw", "3_Ortho_IRRG"))
         os.rename(os.path.join(out_dir, "raw", "3_Ortho_IRRG_1"), os.path.join(out_dir, "raw", "3_Ortho_IRRG"))
 
-        os.rename(os.path.join(out_dir, "raw", "5_Labels_for_participants", "5_Labels_for_participants"), os.path.join(out_dir, "raw", "5_Labels_for_participants_1"))
+        os.rename(os.path.join(out_dir, "raw", "5_Labels_for_participants", "5_Labels_for_participants"), os.path.join(out_dir, "raw", "5_Labels_for_participants", "5_Labels_for_participants_1"))
         shutil.move(os.path.join(out_dir, "raw", "5_Labels_for_participants", "5_Labels_for_participants_1"), os.path.join(out_dir, "raw"))
         os.removedirs(os.path.join(out_dir, "raw", "5_Labels_for_participants"))
         os.rename(os.path.join(out_dir, "raw", "5_Labels_for_participants_1"), os.path.join(out_dir, "raw", "5_Labels_for_participants"))
@@ -243,6 +243,8 @@ class Potsdam(RawGeoFMDataset):
         os.makedirs(f"{out_dir}/train/labels")
         os.makedirs(f"{out_dir}/test/images")
         os.makedirs(f"{out_dir}/test/labels")
+        os.makedirs(f"{out_dir}/val/images")
+        os.makedirs(f"{out_dir}/val/labels")
         print("tiling train images...")
         i = 0
         for full_size_image_number in tqdm(train_numbers):
