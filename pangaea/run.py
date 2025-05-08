@@ -206,6 +206,21 @@ def main(cfg: DictConfig) -> None:
             f"Total number of validation patches: {len(val_dataset)}\n"
         )
 
+        # if the batch size is bigger than the number of samples, set it to the number of samples
+        if cfg.batch_size > len(train_dataset):
+            cfg.batch_size = len(train_dataset)
+            logger.warning(
+                f"Batch size is bigger than the number of samples. "
+                f"Setting batch size to {cfg.batch_size}."
+            )
+
+        if cfg.test_batch_size > len(val_dataset):
+            cfg.test_batch_size = len(val_dataset)
+            logger.warning(
+                f"Test batch size is bigger than the number of samples. "
+                f"Setting test batch size to {cfg.test_batch_size}."
+            )
+
         # get train val data loaders
         train_loader = DataLoader(
             train_dataset,
