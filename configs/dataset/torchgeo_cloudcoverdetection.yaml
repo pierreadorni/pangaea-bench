@@ -1,0 +1,40 @@
+_target_: pangaea.datasets.torchgeo_adapter.TorchGeoAdapter
+dataset_name: CloudCoverDetection
+root_path: ./data/ccd
+auto_download: True
+img_size: 224
+download_url: None
+multi_temporal: False
+multi_modal: False
+
+torchgeo_dataset_name: "CloudCoverDetection"
+torchgeo_val_ratio: 0.2
+cfg_seed: ${seed}
+
+classes:
+  - No Cloud
+  - Cloud
+  - No Data
+num_classes: 3
+ignore_index: 255
+
+bands:
+  optical:
+    - B2
+    - B3
+    - B4
+    - B8
+
+distribution:
+  - 0.2
+  - 0.2
+  - 0.2
+
+data_mean:
+  optical: [0.1, 0.1, 0.1, 0.1]
+data_std:
+  optical: [0.05, 0.05, 0.05, 0.05]
+data_min:
+  optical: [0.0, 0.0, 0.0, 0.0]
+data_max:
+  optical: [1.0, 1.0, 1.0, 1.0]

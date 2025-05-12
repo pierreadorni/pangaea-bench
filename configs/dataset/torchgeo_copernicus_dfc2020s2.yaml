@@ -1,0 +1,119 @@
+_target_: pangaea.datasets.torchgeo_adapter.TorchGeoAdapter
+dataset_name: CopernicusBenchDFC2020S2
+root_path: ./data/copernicus/dfc2020s2
+auto_download: True
+img_size: 256
+download_url: None
+multi_temporal: False
+multi_modal: False
+
+torchgeo_dataset_name: CopernicusBenchDFC2020S2
+torchgeo_val_ratio: 0.2
+cfg_seed: ${seed}
+
+classes:
+ - 'Background' 
+ - 'Forest' 
+ - 'Shrubland' 
+ - 'Savanna' 
+ - 'Grassland' 
+ - 'Wetlands' 
+ - 'Croplands' 
+ - 'Urban/Built-up' 
+ - 'Snow/Ice' 
+ - 'Barren' 
+ - 'Water'
+num_classes: 11
+ignore_index: -1
+
+bands:
+  optical:
+    - B01
+    - B02
+    - B03
+    - B04
+    - B05
+    - B06
+    - B07
+    - B08
+    - B8A
+    - B09
+    - B10
+    - B11
+    - B12
+
+distribution:
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+  - 0.09
+
+data_mean:
+  optical: 
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1
+
+data_std:
+  optical: 
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+
+data_min:
+  optical: 
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1
+  
+data_max:
+  optical:
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1 
+    - 0.1 
+    - 0.1 
+    - 0.1
+    - 0.1

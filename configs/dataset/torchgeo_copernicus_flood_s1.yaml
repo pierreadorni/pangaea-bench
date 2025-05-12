@@ -1,0 +1,42 @@
+_target_: pangaea.datasets.torchgeo_adapter.TorchGeoAdapter
+dataset_name: CopernicusBenchFloodS1
+root_path: ./data/copernicus/flood_s1
+auto_download: True
+img_size: 256
+download_url: None
+multi_temporal: 2
+multi_modal: False
+
+torchgeo_dataset_name: CopernicusBenchFloodS1
+torchgeo_val_ratio: 0.2
+cfg_seed: ${seed}
+torchgeo_dataset_kwargs:
+  mode: 1
+
+classes:
+  - No Water
+  - Permanent Waters
+  - Floods
+  - Unknown
+num_classes: 4
+ignore_index: -1
+
+bands:
+  sar:
+    - VV
+    - VH
+
+distribution:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+
+data_mean:
+  sar: [0.0, 0.0]
+data_std:
+  sar: [1.0, 1.0]
+data_min:
+  sar: [0.0, 0.0]
+data_max:
+  sar: [1.0, 1.0]
