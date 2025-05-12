@@ -206,21 +206,6 @@ def main(cfg: DictConfig) -> None:
             f"Total number of validation patches: {len(val_dataset)}\n"
         )
 
-        # if the batch size is bigger than the number of samples, set it to the number of samples
-        if cfg.batch_size > len(train_dataset):
-            cfg.batch_size = len(train_dataset)
-            logger.warning(
-                f"Batch size is bigger than the number of samples. "
-                f"Setting batch size to {cfg.batch_size}."
-            )
-
-        if cfg.test_batch_size > len(val_dataset):
-            cfg.test_batch_size = len(val_dataset)
-            logger.warning(
-                f"Test batch size is bigger than the number of samples. "
-                f"Setting test batch size to {cfg.test_batch_size}."
-            )
-
         # get train val data loaders
         train_loader = DataLoader(
             train_dataset,
@@ -247,6 +232,17 @@ def main(cfg: DictConfig) -> None:
             # generator=g,
             drop_last=False,
             collate_fn=collate_fn,
+        )
+
+        if len(train_loader) == 0:
+            raise ValueError(
+                "The size of the train loader is 0. "
+                "This could be due to a batch size bigger than the number of samples in the augmented train dataset. "
+                "Can be fixed by lowering the batch size or by increasing the number of samples in the dataset (ex: using more augmentations per raw image)."
+            )
+        logger.info(
+            f"Total number of train batches: {len(train_loader)}\n"
+            f"Total number of validation batches: {len(val_loader)}\n"
         )
 
         criterion = instantiate(cfg.criterion)
