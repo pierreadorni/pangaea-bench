@@ -151,15 +151,14 @@ class ResNetEncoderSAR(Encoder):
         pass
 
 
-
 class ResNetEncoder(Encoder):
     """
     ResNet Encoder for Supervised Baseline, pretrained on ImageNet.
-    It supports single time frame inputs with optical bands.
+    It supports single time frame inputs with any number of bands.
 
     Args:
         output_layers (str | list[str]): The layers from which to extract the output.
-        input_bands (dict[str, list[str]]): Band names, specifically expecting the 'optical' key with a list of bands.
+        input_bands (dict[str, list[str]]): Band names, obtained from the dataset
         depth (int): The depth of the ResNet encoder in [18, 34, 50, 101, 152].
     """
 
@@ -217,6 +216,7 @@ class ResNetEncoder(Encoder):
 
 
     def forward(self, image):
+        # use all modalities
         all_modalities = []
         for key in image.keys():
             all_modalities.append(image[key].squeeze(2))
