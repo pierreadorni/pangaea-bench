@@ -19,6 +19,7 @@ This document provides a detailed overview of the datasets used in this reposito
 
 ### 🧪 Community-Contributed Datasets
 - [Potsdam](#potsdam)
+- [Open-Canopy](#open-canopy)
 - [Geo-Bench Datasets](#geo-bench-datasets)
   - [Multi-label Classification (e.g., m-BigEarthNet)](#for-multi-label-classification-eg-m-bigearthnet)
   - [Single-label Classification (e.g., m-EuroSat, m-Brick-Kiln)](#for-single-label-classification-ie-m-eurosat-m-brick-kiln-m-forestnet-m-pv4ger-m-so2sat)
@@ -256,6 +257,17 @@ This document provides a detailed overview of the datasets used in this reposito
    preprocessing=seg_default \
    criterion=cross_entropy \
    task=segmentation
+  ```
+### Open-Canopy
+   ```
+    torchrun --nnodes=1 --nproc_per_node=1 pangaea/run.py \
+    --config-name=train \
+    dataset=opencanopy \
+    encoder=dofa \
+    decoder=reg_upernet \
+    preprocessing=reg_default \
+    criterion=mse \
+    task=regression
   ```
 ### Geo-Bench Datasets 
 Note that `export GEO_BENCH_DIR=YOUR/PATH/DIR` is required.
